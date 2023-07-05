@@ -135,4 +135,4 @@ declare namespace truecallerjs {
   ): Promise<ResponseData>;
 }
 
-export = truecallerjs;
+export default truecallerjs

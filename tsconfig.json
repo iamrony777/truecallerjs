@@ -4,6 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "esModuleInterop": true,
+    "sourceMap": true,
     "inlineSourceMap": false,
     "listEmittedFiles": false,
     "listFiles": false,
