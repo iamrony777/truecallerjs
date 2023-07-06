@@ -161,5 +161,4 @@ declare namespace truecallerjs {
   ): Promise<ResponseData>;
 }
 
-export default truecallerjs;
 export { login, verifyOtp, search, bulkSearch };

@@ -3,6 +3,7 @@
   "version": "2.1.5",
   "description": "TruecallerJS: A library for effortless retrieval of phone number details using the Truecaller API in Node.js, JavaScript, and TypeScript projects.",
   "main": "dist/cjs/index.js",
+  "files": ["dist"],
   "module": "dist/index.js",
   "type": "module",
   "exports": {
