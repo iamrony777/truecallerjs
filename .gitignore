@@ -1,3 +1,4 @@
 node_modules/
-.truecallerjs/authkey.json
 dist/
+.truecallerjs/authkey.json
+_*

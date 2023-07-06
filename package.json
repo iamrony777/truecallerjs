@@ -12,13 +12,12 @@
     },
     "./package.json": "./package.json"
   },
-  "types": "dist/index.d.ts",
   "bin": {
     "truecallerjs": "./dist/cli.js"
   },
   "scripts": {
-    "prepare": "npm run build:mjs && npm run build:cjs && npm run echo:type-cjs && npm run typings",
-    "build": "rm -rf ./dist && npm run build:mjs && npm run build:cjs && npm run echo:type-cjs && npm run typings",
+    "prepare": "npm run build:mjs && npm run build:cjs && npm run echo:type-cjs",
+    "build": "rm -rf ./dist && npm run build:mjs && npm run build:cjs && npm run echo:type-cjs",
     "build:mjs": "tsc -p tsconfig-mjs.json",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "echo:type-cjs": "echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
@@ -67,6 +66,7 @@
     "@typescript-eslint/parser": "^5.61.0",
     "eslint": "^8.44.0",
     "jest": "^29.6.0",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
