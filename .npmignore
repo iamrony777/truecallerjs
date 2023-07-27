@@ -6,7 +6,10 @@ src/
 # Ignore development and configuration files
 node_modules/
 .truecallerjs/authkey.json
+CODE_OF_CONDUCT.md
+SECURITY.md
 test/
-.git/
+.git*
+.github
 .eslint*
 .prettier*
