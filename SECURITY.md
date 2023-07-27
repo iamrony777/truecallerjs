@@ -1,9 +1,6 @@
-# Security Policy
+## Security Policy
 
-## Supported Versions
-
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+### Supported Versions
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -12,10 +9,14 @@ currently being supported with security updates.
 | < 1.1.x | :x:                |
 | < 1.0.x | :x:                |
 
-## Reporting a Vulnerability
+### Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+To report a security vulnerability, please email [sumithemmadi244@gmail.com](mailto:sumithemmadi244@gmail.com). Provide a detailed description, steps to reproduce, and PoC if possible.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+I will acknowledge receipt within 7 days and investigate. If valid, I will release a fix and coordinate disclosure responsibly.
+
+### Security Updates and Support
+
+We only provide security updates for version 2.1.x. Upgrade to the latest supported version for protection.
+
+Thank you for your contributions to a safer environment.
