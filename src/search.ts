@@ -23,7 +23,7 @@
 import axios, { AxiosResponse } from "axios";
 import { parsePhoneNumber } from "awesome-phonenumber";
 import { Builder } from "xml2js";
-import { toPlainText } from "json-to-plain-text";
+import { jsonToPlainText } from "json-to-plain-text";
 import { stringify as yamlStringify } from "json-to-pretty-yaml";
 import { countries } from "./data/countries.js";
 
@@ -93,7 +93,14 @@ class Format {
   }
 
   public text(color = false, space = false): string {
-    return toPlainText(JSON.parse(JSON.stringify(this.json())), color, space);
+    const options = {
+      color: color, // Whether to apply colors to the output or not
+      spacing: space, // Whether to include spacing after colons or not
+      squareBracketsForArray: false, // Whether to use square brackets for arrays or not
+      doubleQuotesForKeys: false, // Whether to use double quotes for object keys or not
+      doubleQuotesForValues: false,
+    };
+    return jsonToPlainText(JSON.parse(JSON.stringify(this.json())), options);
   }
 
   public getName(): string {
@@ -148,27 +155,20 @@ class Format {
 }
 
 /**
+ * Searching phone number on truecallerjs
  * @var response => {...}
- * @method response.json(color) JSON response. @param {Boolean} color
- * @method response.xml(color)  XML output. @param {Boolean} color .
- * @method response.yaml(color) YAML output. @param {Boolean} color
- * @method response.html(color) HTML output. @param {Boolean} color
- * @method response.text(color,space) JSON response. @param {Boolean} color . @param {Boolean} space Spacing between keys and values.
- *
- *
+ * @method response.json(color) JSON response.
+ * @method response.xml(color)  XML output.
+ * @method response.yaml(color) YAML output.
+ * @method response.html(color) HTML output.
+ * @method response.text(color,space) JSON response.
  * @method response.getName() => "Sumith Emmadi"
  * @method response.getAlternateName() => "sumith"
  * @method response.getAddresses() => {....}
  * @method response.getEmailId() => sumithemmadi244@gmail.com
  * @method response.getCountryDetails() => {...}
- */
-
-/**
- *  Searching phone number on truecallerjs
- *
  * @name search
  * @function truecallerjs.search(search_data)
- * @param {Object} search_data It is a json containing phonenumber,countryCode,installationId
  * @return {Object} It contains details of the phone number
  */
 function search(searchData: SearchData): Promise<Format> {
@@ -196,6 +196,7 @@ function search(searchData: SearchData): Promise<Format> {
     })
     .then(
       (response: AxiosResponse<ResponseData>) => {
+        // console.log(response);
         return new Format(response.data);
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -207,13 +208,10 @@ function search(searchData: SearchData): Promise<Format> {
 
 /**
  * Bulk search on truecallerjs
- *
  * @name bulkSearch
  * @function truecallerjs.bulkSearch(phoneNumbers,countryCode,installationId)
  * @param {String} phoneNumbers phone number separted with coma.
- * @param {String} countryCode Country code to use by default if any phone number is not in `e164` format(Internation format)
  * @param {String} installationId 6-digits OTP .
- *
  * @return {Object} It contains phone numbers information in a array
  */
 function bulkSearch(

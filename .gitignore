@@ -2,3 +2,6 @@ node_modules/
 dist/
 .truecallerjs/authkey.json
 _*
+coverage
+test/authkey.json
+test/request.json

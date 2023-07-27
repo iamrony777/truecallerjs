@@ -20,10 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-declare module "json-to-plain-text" {
-  export function toPlainText(
-    obj: unknown,
-    color?: boolean,
-    space?: boolean
-  ): string;
-}
+import { search } from "../dist/search.js";
+
+describe("Search a phone number", () => {
+  test("Should search for a phone number details", async () => {
+    var search_data = {
+      number: process.env.TEST_PHONE_NUMBER || "9912345678",
+      countryCode: "IN", // Country code to use by default if  phone number is not in `e164` format(Internation format)
+      installationId:
+        process.env.TEST_INSTALLATION_ID ||
+        "a1k07--Vgdfyvv_rftf5uuudhuhnkljyvvtfftjuhbuijbhug",
+    };
+    var response = await search(search_data);
+    console.log(response);
+
+    expect(response).toBeDefined();
+    expect(response.data).toBeDefined();
+  });
+});
